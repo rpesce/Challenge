@@ -21,12 +21,11 @@ HINT: Use some of the ES6 features: classes, subclasses, template strings, defau
 
 
 
-const Park = function(parkName, parkBuildYear, parkNbTrees, parkArea, parkAge){
+const Park = function(parkName, parkBuildYear, parkNbTrees, parkArea){
 	this.parkName = parkName,
 	this.parkBuildYear = parkBuildYear,
 	this.parkTrees = parkNbTrees,
-	this.parkArea = parkArea,
-	this.parkAge = calculateAge(this.parkBuildYear)
+	this.parkArea = parkArea
 };
 
 Park.prototype.treeDensity = function(parkNbTrees, parkArea){
@@ -56,10 +55,20 @@ function avgLengthAll(){
 	//Total and average length of the town's streets
 };
 
+
+let allParks = [];
+function addPark(a, b, c, d){
+	let newPark = new Park(a, b, c, d);
+	allParks.push(newPark);
+};
+
 //Create 3 parks
-let park1 = new Park("park1", 1900, 900, 400);
-let park2 = new Park("park2", 1850, 1100, 700);
-let park3 = new Park("park3", 1760, 560, 860);
+addPark("park1", 1900, 900, 400);
+addPark("park2", 1850, 1100, 700);
+addPark("park2", 1850, 1100, 700);
+
+console.log(allParks);
+
 
 //Create 4 streets
 let street1 = new Street("street1", 1678, 1200, "Normal");
@@ -70,7 +79,8 @@ let street4 = new Street("street4", 2015, 1345);
 
 
 //1. Tree density of each park in the town (forumla: number of trees/park area)
-	
+
+
 
 //2. Average age of each town's park (forumla: sum of all ages/number of parks)
 	// Get all the agen in one array
