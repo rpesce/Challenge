@@ -21,18 +21,25 @@ HINT: Use some of the ES6 features: classes, subclasses, template strings, defau
 
 
 
-const Park = function(parkName, parkNbTrees, parkArea, parkAge){
+const Park = function(parkName, parkBuildYear, parkNbTrees, parkArea, parkAge){
 	this.parkName = parkName,
+	this.parkBuildYear = parkBuildYear,
 	this.parkTrees = parkNbTrees,
 	this.parkArea = parkArea,
-	this.parkAge = parkAge
+	this.parkAge = calculateAge()
 };
 
 Park.prototype.treeDensity = function(parkNbTrees, parkArea){
 	return (parkNbTrees / parkArea);
 };
 
-const Street = function(streetLength, sizeClassification){
+Park.prototype.calculateAge = function(buildYear){
+	return new Date().getFullYear() - buildYear;
+};
+
+const Street = function(streetName, streetBuildYear, streetLength, sizeClassification){
+	this.streetName = streetName,
+	this.streetBuildYear = streetBuildYear,
 	this.streetLength = streetLength,
 	this.sizeClassification = sizeClassification
 };
@@ -49,14 +56,28 @@ function avgLengthAll(){
 	//Total and average length of the town's streets
 };
 
+//Create 3 parks
+
+
+//Create 4 streets
 
 
 
 
 
 
+//1. Tree density of each park in the town (forumla: number of trees/park area)
+	
 
+//2. Average age of each town's park (forumla: sum of all ages/number of parks)
+	// Get all the agen in one array
+	//Use .map with an arrow function to loop
 
+//3. The name of the park that has more than 1000 trees
+
+//4. Total and average length of the town's streets
+
+//5. Size classification of all streets: tiny/small/normal/big/huge. If the size is unknown, the default is normal
 
 
 
