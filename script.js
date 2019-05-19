@@ -26,7 +26,7 @@ const Park = function(parkName, parkBuildYear, parkNbTrees, parkArea, parkAge){
 	this.parkBuildYear = parkBuildYear,
 	this.parkTrees = parkNbTrees,
 	this.parkArea = parkArea,
-	this.parkAge = calculateAge()
+	this.parkAge = calculateAge(this.parkBuildYear)
 };
 
 Park.prototype.treeDensity = function(parkNbTrees, parkArea){
@@ -37,7 +37,7 @@ Park.prototype.calculateAge = function(buildYear){
 	return new Date().getFullYear() - buildYear;
 };
 
-const Street = function(streetName, streetBuildYear, streetLength, sizeClassification){
+const Street = function(streetName, streetBuildYear, streetLength, sizeClassification = "Normal"){
 	this.streetName = streetName,
 	this.streetBuildYear = streetBuildYear,
 	this.streetLength = streetLength,
@@ -57,12 +57,15 @@ function avgLengthAll(){
 };
 
 //Create 3 parks
-
+let park1 = new Park("park1", 1900, 900, 400);
+let park2 = new Park("park2", 1850, 1100, 700);
+let park3 = new Park("park3", 1760, 560, 860);
 
 //Create 4 streets
-
-
-
+let street1 = new Street("street1", 1678, 1200, "Normal");
+let street2 = new Street("street2", 1955, 780, "Tiny");
+let street3 = new Street("street3", 1477, 1564, "Huge");
+let street4 = new Street("street4", 2015, 1345);
 
 
 
