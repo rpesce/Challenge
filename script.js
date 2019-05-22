@@ -28,33 +28,12 @@ const Park = function(parkName, parkBuildYear, parkNbTrees, parkArea){
 	this.parkArea = parkArea
 };
 
-Park.prototype.treeDensity = function(parkNbTrees, parkArea){
-	return (parkNbTrees / parkArea);
-};
-
-Park.prototype.calculateAge = function(buildYear){
-	return new Date().getFullYear() - buildYear;
-};
-
 const Street = function(streetName, streetBuildYear, streetLength, sizeClassification = "Normal"){
 	this.streetName = streetName,
 	this.streetBuildYear = streetBuildYear,
 	this.streetLength = streetLength,
 	this.sizeClassification = sizeClassification
 };
-
-function avgParkAges(){
-	//sum of all ages/number of parks
-};
-
-function more1000(){
-	//The name of the park that has more than 1000 trees
-};
-
-function avgLengthAll(){
-	//Total and average length of the town's streets
-};
-
 
 let allParks = [];
 function addPark(a, b, c, d){
@@ -63,27 +42,46 @@ function addPark(a, b, c, d){
 };
 
 //Create 3 parks
-addPark("park1", 1900, 900, 400);
-addPark("park2", 1850, 1100, 700);
-addPark("park2", 1850, 1100, 700);
+addPark("Park1", 1900, 900, 400);
+addPark("Park2", 1850, 1100, 700);
+addPark("Park3", 1244, 300, 850);
 
-console.log(allParks);
-
+let allStreets = [];
+function addStreet(a, b, c, d){
+	let newStreet = new Street(a, b, c, d);
+	allStreets.push(newStreet);
+};
 
 //Create 4 streets
-let street1 = new Street("street1", 1678, 1200, "Normal");
-let street2 = new Street("street2", 1955, 780, "Tiny");
-let street3 = new Street("street3", 1477, 1564, "Huge");
-let street4 = new Street("street4", 2015, 1345);
-
-
+addStreet("street1", 1678, 1200, "Normal");
+addStreet("street2", 1955, 780, "Tiny");
+addStreet("street3", 1477, 1564, "Huge");
+addStreet("street4", 2015, 1345);
 
 //1. Tree density of each park in the town (forumla: number of trees/park area)
-
+	//Loop through each park and console log the result
+	for(const cur of allParks) {
+		console.log(`${cur.parkName} has the following tree density: ${(cur.parkTrees/cur.parkArea).toFixed(2)} trees/km2`);
+	};
 
 
 //2. Average age of each town's park (forumla: sum of all ages/number of parks)
-	// Get all the agen in one array
+	let ages = [];
+	for(const cur of allParks) {
+		let age = new Date().getFullYear() - cur.parkBuildYear;
+		ages.push(age);
+	}
+
+	for(const cur of ages){
+		let tt = cur;
+		return tt;
+	};
+
+	console.log(`The average age of all parks is ${(tt)/ages.length}`);
+
+
+
+	// Get all the ages in one array
 	//Use .map with an arrow function to loop
 
 //3. The name of the park that has more than 1000 trees
