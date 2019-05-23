@@ -42,9 +42,9 @@ function addPark(a, b, c, d){
 };
 
 //Create 3 parks
-addPark("Park1", 1900, 900, 400);
-addPark("Park2", 1850, 1100, 700);
-addPark("Park3", 1244, 300, 850);
+addPark("Park1", 1765, 900, 400);
+addPark("Park2", 2017, 1100, 700);
+addPark("Park3", 1896, 300, 850);
 
 let allStreets = [];
 function addStreet(a, b, c, d){
@@ -70,19 +70,13 @@ addStreet("street4", 2015, 1345);
 	for(const cur of allParks) {
 		let age = new Date().getFullYear() - cur.parkBuildYear;
 		ages.push(age);
-	}
-
-	for(const cur of ages){
-		let tt = cur;
-		return tt;
 	};
 
-	console.log(`The average age of all parks is ${(tt)/ages.length}`);
-
-
-
-	// Get all the ages in one array
-	//Use .map with an arrow function to loop
+	let t = 0
+	for(let i=0;i<ages.length;i++){
+		t += ages[i];
+	};
+	console.log(`The average age of all parks is ${(t/ages.length).toFixed(0)} years old`);
 
 //3. The name of the park that has more than 1000 trees
 
