@@ -24,7 +24,7 @@ HINT: Use some of the ES6 features: classes, subclasses, template strings, defau
 const Park = function(parkName, parkBuildYear, parkNbTrees, parkArea){
 	this.parkName = parkName,
 	this.parkBuildYear = parkBuildYear,
-	this.parkTrees = parkNbTrees,
+	this.parkNbTrees = parkNbTrees,
 	this.parkArea = parkArea
 };
 
@@ -42,9 +42,9 @@ function addPark(a, b, c, d){
 };
 
 //Create 3 parks
-addPark("Park1", 1765, 900, 400);
-addPark("Park2", 2017, 1100, 700);
-addPark("Park3", 1896, 300, 850);
+addPark("Park Nb 1", 1765, 800, 400);
+addPark("Park Nb 2", 2017, 900, 700);
+addPark("Park Nb 3", 1896, 10000, 850);
 
 let allStreets = [];
 function addStreet(a, b, c, d){
@@ -58,29 +58,44 @@ addStreet("street2", 1955, 780, "Tiny");
 addStreet("street3", 1477, 1564, "Huge");
 addStreet("street4", 2015, 1345);
 
+
 //1. Tree density of each park in the town (forumla: number of trees/park area)
 	//Loop through each park and console log the result
 	for(const cur of allParks) {
-		console.log(`${cur.parkName} has the following tree density: ${(cur.parkTrees/cur.parkArea).toFixed(2)} trees/km2`);
+		console.log(`${cur.parkName} has the following tree density: ${(cur.parkNbTrees/cur.parkArea).toFixed(2)} trees/km2`);
 	};
 
-
 //2. Average age of each town's park (forumla: sum of all ages/number of parks)
-	let ages = [];
+	let parkAges = [];
 	for(const cur of allParks) {
 		let age = new Date().getFullYear() - cur.parkBuildYear;
-		ages.push(age);
+		parkAges.push(age);
 	};
 
 	let t = 0
-	for(let i=0;i<ages.length;i++){
-		t += ages[i];
+	for(let i=0;i<parkAges.length;i++){
+		t += parkAges[i];
 	};
-	console.log(`The average age of all parks is ${(t/ages.length).toFixed(0)} years old`);
+	console.log(`The average age of all parks is ${(t/parkAges.length).toFixed(0)} years old`);
 
 //3. The name of the park that has more than 1000 trees
+	let nbTrees = [];
+	for(const cur of allParks) {
+		nbTrees.push(cur.parkNbTrees);
+	};
+	console.log(`The park that has more than 1000 trees is '${allParks[nbTrees.findIndex(cur => cur >= 1000)].parkName}'`);
 
 //4. Total and average length of the town's streets
+		let allStLength = [];
+		for(const cur of allStreets) {
+			allStLength.push(cur.streetLength);
+		};
+
+		function sumAll(...lgth){
+			lght.forEach(cur => )
+		}
+
+
 
 //5. Size classification of all streets: tiny/small/normal/big/huge. If the size is unknown, the default is normal
 
