@@ -72,7 +72,7 @@ addStreet("street4", 2015, 1345);
 		parkAges.push(age);
 	};
 
-	let t = 0
+	let t = 0;
 	for(let i=0;i<parkAges.length;i++){
 		t += parkAges[i];
 	};
@@ -91,11 +91,12 @@ addStreet("street4", 2015, 1345);
 			allStLength.push(cur.streetLength);
 		};
 
-		function sumAll(...lgth){
-			lght.forEach(cur => )
-		}
-
-
+		let s = 0;
+		for(let i=0;i<allStLength.length;i++){
+			s += allStLength[i];
+		};
+		console.log(`The total length of the towns streets is ${s} Km`);
+		console.log(`The average length of the towns streets is ${(s/allStLength.length).toFixed(0)} Km`);
 
 //5. Size classification of all streets: tiny/small/normal/big/huge. If the size is unknown, the default is normal
 
