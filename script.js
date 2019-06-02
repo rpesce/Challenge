@@ -21,6 +21,118 @@ HINT: Use some of the ES6 features: classes, subclasses, template strings, defau
 
 
 
+class Element {
+	constructor(name, buildYear) {
+		this.name = name;
+		this.buildYear = buildYear;
+	}
+}
+
+class Park extends Element {
+	constructor(name, buildYear, area, numTrees) {
+		super(name, buildYear);
+		this.area = area;
+		this.numTrees = numTrees;
+	}
+
+	treeDensity() {
+		const density = this.numTrees / this.area;
+		console.log(`${this.name} has a tree desity of ${density.toFixed(2)} km.`);
+	}
+}
+
+class Street extends Element {
+	constructor(name, buildYear, length, size = 3){
+		super(name, buildYear);
+		this.length = length;
+		this.size = size;
+	}
+
+	classifyStreet() {
+		const classification = new Map();
+		classification.set(1, 'tiny');
+		classification.set(2, 'small');
+		classification.set(3, 'normal');
+		classification.set(4, 'big');
+		classification.set(5, 'huge');
+		console.log(`${this.name}, build in ${this.buildYear}, is a ${classification.get(this.size)} street`);
+	}
+
+}
+
+const allParks = [];
+function addPark(a, b, c, d){
+	let newPark = new Park(a, b, c, d);
+	allParks.push(newPark);
+};
+
+//Create 3 parks
+addPark("Park Nb 1", 1765, 800, 400);
+addPark("Park Nb 2", 2017, 900, 700);
+addPark("Park Nb 3", 1896, 850, 10000);
+
+let allStreets = [];
+function addStreet(a, b, c, d){
+	let newStreet = new Street(a, b, c, d);
+	allStreets.push(newStreet);
+};
+
+//Create 4 streets
+addStreet("Street 1", 1678, 1200, 2);
+addStreet("Street 2", 1955, 780, 1);
+addStreet("Street 3", 1477, 1564, 5);
+addStreet("Street 4", 2015, 1345);
+
+
+
+function calc(arr) {
+	const sum = arr.reduce((prev, cur, index) => prev + cur, 0);
+	return [sum, sum / arr.length];
+}
+
+
+function reportParks(p) {
+	console.log('-----PARKS REPORT-----');
+
+	//Density
+	p.forEach(el => el.treeDensity());
+
+	//Avg Age
+	const ages = p.map(el => new Date().getFullYear() - el.buildYear);
+	const [totalAge, avgAge] = calc(ages);
+	console.log(`Our ${p.length} parks have an average of ${avgAge.toFixed(0)} years.`)
+
+	//Over 1000 trees
+	const i = p.map(el => el.numTrees).findIndex(el => el >= 1000);
+	console.log(`${p[i].name} has more than 1000 trees`);
+}
+
+function reportStreets(s){
+	console.log('-----STREETS REPORT-----');
+
+	//TT and avg length
+	const [totalLength, avgLength] = calc(s.map(el => el.length));
+	console.log(`Our ${s.length} streets have a total length of ${totalLength} kilometers with an average of ${avgLength.toFixed(0)} km.`);
+
+	//classify
+	s.forEach(el => el.classifyStreet());
+}
+
+reportParks(allParks);
+reportStreets(allStreets);
+
+
+
+
+
+
+
+
+// MY FIRST SOLUTION
+/*
+
+
+
 const Park = function(parkName, parkBuildYear, parkNbTrees, parkArea){
 	this.parkName = parkName,
 	this.parkBuildYear = parkBuildYear,
@@ -107,21 +219,7 @@ for(const cur of allStreets){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+*/
 
 
 
