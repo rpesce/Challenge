@@ -5,6 +5,33 @@
 	<body>
 		
 		<script>
+			async function getWeatherAW(woeid){
+				try {
+					const result = await fetch("https://crossorigin.me/https://www.metaweather.com/api/location/44418/");
+					const data = await result.json();
+					const tomorrow =data.consolidated_weather[1];
+					console.log(`The temperature tomorrow in ${data.title} will stay between ${tomorrow.min_temp} and ${tomorrow.max_temp}.`);
+					return data;
+				} catch(error) {
+					alert(error);
+				}
+			}
+			getWeatherAW(2487956);
+			getWeatherAW(44418);
+
+		
+		</script>
+	</body>
+</html>
+
+
+<!-- <html>
+	<head>
+	</head>
+	
+	<body>
+		
+		<script>
 			function getWeather(woeid) {
 				fetch("https://crossorigin.me/https://www.metaweather.com/api/location/44418/")
 				.then(result => {
@@ -22,4 +49,4 @@
 		
 		</script>
 	</body>
-</html>
+</html> -->
